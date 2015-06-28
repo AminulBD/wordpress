@@ -1,5 +1,5 @@
 {
-  "name": "wordpress",
+  "name": "atom-wordpress",
   "version": "0.1.0",
   "private": true,
   "description": "Collection of all wordpress functions for atom",
