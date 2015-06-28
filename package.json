@@ -1,0 +1,12 @@
+{
+  "name": "wordpress",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Collection of all wordpress functions for atom",
+  "repository": "https://github.com/AminulBD/wordpress",
+  "license": "MIT",
+  "engines": {
+    "atom": ">1.0.0"
+  },
+  "dependencies": {}
+}

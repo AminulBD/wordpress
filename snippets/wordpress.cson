@@ -1,0 +1,52 @@
+'.text.html':
+  'Action':
+    'prefix': 'wpact'
+    'body': 'add_action(\'${1:hook}\',\'${2:callback-function}\',${3:10},${4:1});'
+  'Filter':
+    'prefix': 'wpfilt'
+    'body': 'add_filter(\'${1:hook}\',\'${2:callback-function}\',${3:10},${4:1});'
+  'Get Archives':
+    'prefix': 'wparch'
+    'body': '<?php wp_get_archives(\'${1:type=monthly&limit=12&show_post_count=1}\'); ?>'
+  'Get Category Parents':
+    'prefix': 'catparents'
+    'body': '<?php echo(get_category_parents(${1:category}, ${2:display link}, ${3:separator}, ${4:nice name})); ?>'
+  'Get The Category (Categories)':
+    'prefix': 'thecat'
+    'body': '<?php \nforeach((get_the_category()) as $cat) { \n${1:echo $cat->cat_name . \' \';}$2 \n} ?>\n$0'
+  'HTML Body tag':
+    'prefix': 'body'
+    'body': '<body ${1:<?php body_class(); ?>}>\n\t$2\n</body>'
+  'Headline':
+    'prefix': 'headline'
+    'body': '<a href="<?php the_permalink(); ?>" rel="bookmark">"\'><?php the_title(); ?></a>'
+  'List Categories (Full Options)':
+    'prefix': 'listcats'
+    'body': '<?php list_cats(${1:optionall}, \'${2:all}\', \'${3:sort_column}\',\'${4:sort_order}\', \'${5:file}\', ${6:list}, ${7:optiondates}, ${8:optioncount}, ${9:hide_empty}, ${10:use_desc_for_title}, ${11:children}, ${12:child_of}, \'${13:Categories}\', ${14:recurse}, \'${15:feed}\', \'${16:feed_img}\', \'${17:exclude}\', ${18:hierarchical}); ?>$0'
+  'List Categories (WP)':
+    'prefix': 'listcats'
+    'body': '<?php wp_list_cats(\'$1\'); ?>$0'
+  'Loop':
+    'prefix': 'loop'
+    'body': '<?php if (have_posts()) : ?>\n\n\t<?php while (have_posts()) : the_post(); ?>\n\n\t\t<?php // Individual Post Styling ?>\n\n\t<?php endwhile; ?>\n\n\t\t<?php // Navigation ?>\n\n\t<?php else : ?>\n\n\t\t<?php // No Posts Found ?>\n\n<?php endif; ?>'
+  'Plugin with GPL':
+    'prefix': 'plugin'
+    'body': '<?php\n/*\nPlugin Name: $1\nVersion: ${2:0.1}\nPlugin URI: ${TM_PLUGIN_BASE}$3\nDescription: $4\nAuthor: ${TM_NAME}\nAuthor URI: ${TM_HOMEPAGE}\n\nCopyright `date +%Y` ${TM_NAME} (email: ${TM_EMAIL})\n\nThis program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software\nFoundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA\n*/\n\n$5\n\n?>\n'
+  'Plugin':
+    'prefix': 'plugin'
+    'body': '<?php\n/*\nPlugin Name: $1\nVersion: ${2:0.1}\nPlugin URI: ${TM_PLUGIN_BASE}$3\nDescription: $4\nAuthor: ${TM_NAME}\nAuthor URI: ${TM_HOMEPAGE}\n*/\n\n$5\n\n\n?>\n'
+  'Query Posts':
+    'prefix': 'query'
+    'body': '<?php query_posts("${1:cat=-3}") ?>'
+  'Readme.txt':
+    'prefix': 'readme'
+    'body': '=== ${1:Plugin Name} ===\nContributors: ${TM_WP_LOGIN}\nDonate link: ${TM_HOMEPAGE}\nTags: ${2:tag, tag}\nRequires at least: ${3:2.5}\nTested up to: ${4:2.8}\nStable tag: ${5:0.1}\n\n${6:Short description}\n\n== Description ==\n\n${7:Short description}\n\n== Installation ==\n\n1. Upload the \\`${8:plugin}\\` folder to the \\`/wp-content/plugins/\\` directory\n1. Activate the plugin through the \'Plugins\' menu in WordPress\n1. $9\n\n== Changelog ==\n\n= $5 =\n* Initial release.'
+  'Single Post Title':
+    'prefix': 'singletitle'
+    'body': '<?php single_post_title(${1:\'Current post: \'}${2:, TRUE}); ?>'
+  'WP Redirect':
+    'prefix': 'wpredir'
+    'body': 'wp_redirect("$1",${2:301});\t'
+  'Widget':
+    'prefix': 'widget'
+    'body': 'class $1_Widget extends WP_Widget {\n\n\tfunction $1_Widget() {\n\t\t\\$widget_ops = array( \'classname\' => \'$2\', \'description\' => \'$3\' );\n\t\t\\$control_ops = array( \'width\' => 200, \'height\' => 250, \'id_base\' => \'$4\' );\n\t\t\\$this->WP_Widget( \'$4\', \'${5:title}\', \\$widget_ops, \\$control_ops );\n\t}\n\n\tfunction widget( \\$args, \\$instance ) {\n\t\textract( \\$args );\n\t\techo \\$before_widget;\n\t\t\\$title = apply_filters(\'widget_title\', \\$instance[\'title\'] );\n\t\tif ( \\$title ) {\n\t\t\techo \\$before_title . \\$title . \\$after_title;\n\t\t}\n\t\techo \\$after_widget;\n\t}\n\n\tfunction update( \\$new_instance, \\$old_instance ) {\n\t\t\\$instance = \\$old_instance;\n\t\tforeach ( array(\'title\') as \\$val ) {\n\t\t\t\\$instance[\\$val] = strip_tags( \\$new_instance[\\$val] );\n\t\t}\n\t\treturn \\$instance;\n\t}\n\n\tfunction form( \\$instance ) {\n\t\t\\$defaults = array( \n\t\t\t\'title\' \t\t=> \'$5\', \n\t\t);\n\t\t\\$instance = wp_parse_args( (array) \\$instance, \\$defaults ); ?>\n\t\t<p>\n\t\t\t<label for="<?php echo \\$this->get_field_id( \'title\' ); ?>"><?php _e("Title"); ?>:</label>\n\t\t\t<input id="<?php echo \\$this->get_field_id( \'title\' ); ?>" name="<?php echo \\$this->get_field_name( \'title\' ); ?>" value="<?php echo \\$instance[\'title\']; ?>" style="width:100%;" />\n\t\t</p>\n\t<?php \n\t}\n}\n\nfunction $4_widget_func() {\n\tregister_widget( \'$1_Widget\' );\n}\n\nadd_action( \'widgets_init\', \'$4_widget_func\' );\n'
