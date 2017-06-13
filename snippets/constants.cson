@@ -1,4 +1,4 @@
-".text.html":
+".text.html.php":
 	"XMLRPC_REQUEST":
     "prefix": "XMLRPC_REQUEST"
     "body": "XMLRPC_REQUEST"
