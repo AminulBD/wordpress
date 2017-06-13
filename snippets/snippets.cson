@@ -1,4 +1,4 @@
-".text.html":
+".text.html.php":
 	"Enqueue a script":
     "prefix": "wp_enqueue_template"
     "body": """
