@@ -1,4 +1,4 @@
-".text.html":
+".text.html.php":
 	"_get_cron_lock":
 		"prefix": "_get_cron_lock"
 		"body": "_get_cron_lock()"

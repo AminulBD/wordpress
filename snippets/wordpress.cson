@@ -1,4 +1,4 @@
-'.text.html':
+'.text.html.php':
   'Action':
     'prefix': 'wpact'
     'body': 'add_action(\'${1:hook}\',\'${2:callback-function}\',${3:10},${4:1});'
